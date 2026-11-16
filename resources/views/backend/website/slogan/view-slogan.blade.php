@@ -1,0 +1,53 @@
+@extends('backend.layouts.master')
+@section('content')
+<div class="col-xl-12">
+  <div class="breadcrumb-holder">
+    <h1 class="main-title float-left">Manage Slogan</h1>
+    <ol class="breadcrumb float-right">
+      <li class="breadcrumb-item"><a href="{{route('home')}}"><strong>Home</strong></a></li>
+      <li class="breadcrumb-item active">Slogan</li>
+    </ol>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="container fullbody">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"> Slogan List
+          <a class="btn btn-success float-right btn-sm" href="{{route('web-site.slogan.add')}}"><i class="fa fa-plus-circle"></i> Add Slogan</a>
+         </h3>
+      </div>
+
+      <div class="card-body">
+        <table id="example1" class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th width="6%">SL</th>
+              <th>Title in English</th>
+              <th>Title in Bangla</th>
+              <th width="13%">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+              @foreach($allData as $key => $value)
+            <tr class="text-center">
+              <td>{{$key+1}}</td>
+              <td>{{$value->title_en}}</td>
+              <td>{{$value->title_bn}}</td>
+              <td>
+                <a title="Edit" class="btn btn-sm btn-primary" href="{{route('web-site.slogan.edit',$value->id)}}"><i class="fa fa-edit"></i></a> 
+
+                <!-- <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{route('web-site.slogan.delete')}}" data-token="{{csrf_token()}}" data-id="{{$value->id}}"><i class="fa fa-trash"></i></a> -->
+              </td>
+            </tr>
+             @endforeach
+          </tbody>
+        </table>
+      </div><!-- /.card-body -->
+
+    </div>
+  </div>
+</div>
+
+@endsection

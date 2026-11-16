@@ -1,0 +1,54 @@
+@extends('backend.layouts.master')
+@section('content')
+<div class="col-xl-12">
+  <div class="breadcrumb-holder">
+    <h1 class="main-title float-left">Manage Exam Room</h1>
+    <ol class="breadcrumb float-right">
+      <li class="breadcrumb-item"><a href="{{route('home')}}"><strong>Home</strong></a></li>
+      <li class="breadcrumb-item active">Exam Room</li>
+    </ol>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="container fullbody">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Exam Room List
+          <a href="{{ route('setups.exam.room.add') }}" class="btn btn-success float-right btn-sm custom_btn"><i class="fa fa-plus-circle"> Add Exam Room</i></a>
+        </h3>
+      </div>
+
+      <div class="card-body">
+        <table id="example1" class="table table-bordered">
+          <thead>
+          <tr>
+            <th width="15%">SL</th>
+            <th>Class</th>
+            <th>Roll No</th>
+            <th>Room No</th>
+            <th width="15%">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          @foreach($allData as $key=> $value)
+            <tr class="text-center">
+              <td>{{ $key + 1 }}</td>
+              <td>{{ @$value['student_class']['name'] }}</td>
+              <td>{{$value->start_roll}} - {{$value->end_roll}}</td>
+              <td>{{$value->room_no}}</td>
+              <td>
+                <a href="{{ route('setups.exam.room.edit',$value->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
+                <a id="delete" href="{{ route('setups.exam.room.delete') }}" data-token="{{csrf_token()}}" data-id="{{$value->id}}" class="btn btn-danger btn-sm" title="Delete"><i class="fa fa-trash"></i></a>              
+              </td>
+            </tr> 
+          @endforeach               
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+@endsection
