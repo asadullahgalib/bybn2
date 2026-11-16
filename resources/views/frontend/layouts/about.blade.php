@@ -9,7 +9,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="about__content">
-                    <h2 class="about__title">ABOUT <br> <em style="text-transform: uppercase;"> {{@$contact->name_en}}</em></h2>
+                    <h2 class="about__title">ABOUT US</h2>
                     <?php echo substr(@$about->description_en,0,1200); ?>
                     <ul>
                         <li><a href="{{route('frontend.about.us')}}" class="more-about"> Read More <span class="fa fa-arrow-right"></span></a></li>

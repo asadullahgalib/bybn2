@@ -3,5 +3,7 @@
     @include('frontend.layouts.slider')
     @include('frontend.layouts.about')
     @include('frontend.layouts.activity')
+    @include('frontend.layouts.impact')
+    @include('frontend.layouts.support') 
     @include('frontend.layouts.working_area')
 @endsection
